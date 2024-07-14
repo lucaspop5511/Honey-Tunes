@@ -6,11 +6,30 @@
     <title>Honey Tunes - Ear Training Test</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="greeting.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 
 <body>
-    <div class="wrapper">
+    <div id="greeting-section">
+        <h2>Welcome to Honey Tunes Ear Training!</h2>
+        <form id="name-form">
+            <label for="username">What should we call you?:</label>
+            <input type="text" id="username" required>
+            <button type="submit">Next</button>
+        </form>
+    </div>
+    <div id="piano-section" class="wrapper" style="display: none;">
+
+        <div class="detail-section">
+            <button class="play-button">Play</button>
+            <div class="screen">
+                <div class="level">Level:<br>0</div>
+                <div class="difficulty">Difficulty:<br>Easy</div>
+                <div class="lives">Lives:<br>3</div>
+            </div>
+        </div>
+
         <ul class="piano-keys">
             <li class="key white" data-key="a"><span>a</span></li>
             <li class="key black" data-key="w"><span>w</span></li>
@@ -30,6 +49,7 @@
             <li class="key black" data-key="p"><span>p</span></li>
             <li class="key white" data-key=";"><span>;</span></li>
         </ul>
+
     </div>
 
 </body>

@@ -3,7 +3,10 @@ const pianoKeys = document.querySelectorAll(".piano-keys .key");
 let allKeys = [],
     pressedKeys = new Set(); // Set to keep track of pressed keys
 
+let pianoEnabled = false; // Flag to track if piano keys should be enabled
+
 const playTune = (key) => {
+    if (!pianoEnabled) return; // Check if piano is enabled
     const audio = new Audio(`tunes/${key}.wav`); // create a new Audio object for each key press
     audio.play(); // play audio
 
@@ -16,11 +19,14 @@ const playTune = (key) => {
 
 pianoKeys.forEach(key => {
     allKeys.push(key.dataset.key); // add data-key value to the allKeys array
-    // call playTune function with passing data-key value as an argument
-    key.addEventListener("click", () => playTune(key.dataset.key));
+    // Add event listener to check if piano is enabled before playing
+    key.addEventListener("click", () => {
+        if (pianoEnabled) playTune(key.dataset.key);
+    });
 });
 
 const pressedKey = (e) => {
+    if (!pianoEnabled) return; // Check if piano is enabled
     const key = e.key.toLowerCase();
     if (allKeys.includes(key) && !pressedKeys.has(key)) {
         playTune(key);
@@ -29,6 +35,7 @@ const pressedKey = (e) => {
 }
 
 const releasedKey = (e) => {
+    if (!pianoEnabled) return; // Check if piano is enabled
     const key = e.key.toLowerCase();
     if (pressedKeys.has(key)) {
         pressedKeys.delete(key);
@@ -37,3 +44,14 @@ const releasedKey = (e) => {
 
 document.addEventListener("keydown", pressedKey);
 document.addEventListener("keyup", releasedKey);
+
+// Function to enable piano keys
+function enablePiano() {
+    pianoEnabled = true;
+}
+
+// Function to disable piano keys
+function disablePiano() {
+    pianoEnabled = false;
+}
+
