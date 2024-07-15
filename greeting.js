@@ -6,6 +6,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const logoSection = document.getElementById('logo-section');
     const logoIMG = document.getElementById('logoIMG');
     const earTraining = document.getElementById('earTraining');
+    const inputContainer = document.createElement('div');
+    inputContainer.classList.add('input-container');
+
+    usernameInput.parentNode.insertBefore(inputContainer, usernameInput);
+    inputContainer.appendChild(usernameInput);
+
+    usernameInput.addEventListener('input', function () {
+        usernameInput.style.width = ((usernameInput.value.length + 0) * 5) + 'rem';
+    });
 
     startButton.addEventListener('click', function () {
         startButton.style.display = 'none';

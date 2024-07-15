@@ -62,6 +62,57 @@ body {
     transform: translate(-50%, -50%);
 }
 
+#username {
+    border: none;
+    outline: none;
+    background: none;
+    color: bisque;
+    font-family: 'thatsFontFolks';
+    font-size: 15vw;
+    text-align: center;
+    width: auto;
+    min-width: 400px;
+}
+
+.input-container {
+    display: inline-block;
+    position: relative;
+    font-family: 'thatsFontFolks';
+    font-size: 15vw;
+    color: bisque;
+}
+
+.input-container::before,
+.input-container::after {
+    content: '"';
+    position: absolute;
+    top: 0;
+}
+
+.input-container::before {
+    left: -35px;
+}
+
+.input-container::after {
+    right: 0px;
+}
+
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
 #start-button {
     position: fixed;
     margin-top: 0px;
