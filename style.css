@@ -1,10 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -12,16 +9,87 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: #23313b;
+    background-image: url('media/looneyTunesBackground.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 #greeting-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
     margin-top: 50px;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+}
+
+#logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: bisque;
+    font-family: 'thatsFontFolks';
+    transition: all 0.5s ease-in-out;
+}
+
+#earTraining {
+    margin-left: 252px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 25px;
+    color: #eee6b1;
+    transition: all .4s ease;
+}
+
+#logoIMG {
+    justify-content: center;
+    width: 50vw;
+    height: auto;
+    min-width: 400px;
+    margin-bottom: 0;
+    transition: all 0.2s ease;
 }
 
 #name-form {
     margin-top: 20px;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#start-button {
+    position: fixed;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    bottom: 7vh;
+    right: 47vw;
+    background-color: #00000000;
+    border: none;
+    font-family: 'Playwrite';
+    font-size: 30px;
+}
+
+#start-button:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 10px;
+    left: 0px;
+    transform: scaleX(0);
+    background: #000000;
+    transform-origin: bottom right;
+    transition: transform 0.5s ease-out;
+}
+
+#start-button:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 #piano-section {
@@ -165,4 +233,52 @@ body {
     .piano-keys .white {
         width: 50px;
     }
+
+    #start-button {
+        right: 42vw;
+    }
+}
+
+@keyframes moveLogo {
+    0% {
+        top: 20%;
+        right: 0%;
+    }
+
+    100% {
+        margin-top: 0;
+        top: 10px;
+        right: 0%;
+    }
+}
+
+@keyframes shrinkLogo {
+    0% {
+        width: 50vw;
+    }
+
+    100% {
+        min-width: 200px;
+        width: 200px;
+    }
+}
+
+#logo-section.move-up {
+    animation: moveLogo 0.5s forwards;
+    position: fixed;
+    width: 100%;
+}
+
+#logoIMG.shrink {
+    animation: shrinkLogo 0.9s forwards;
+}
+
+@font-face {
+    font-family: 'thatsFontFolks';
+    src: url(media/Thats\ Font\ Folks!.ttf);
+}
+
+@font-face {
+    font-family: 'Playwrite';
+    src: url(media/Playwrite_NL/PlaywriteNL-VariableFont_wght.ttf);
 }
