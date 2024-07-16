@@ -55,11 +55,24 @@ body {
 
 #name-form {
     margin-top: 20px;
-    display: none;
     position: absolute;
+    width: 100vw;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.what-name {
+    display: inline;
+    width: 40vw;
+    color: rgb(16, 16, 16);
+    padding: 5px 25px;
+    font-size: calc(1vw + 1vh);
+    font-family: 'Playwrite';
+    border: 3px solid rgb(22, 22, 22);
+    border-radius: 100px;
+    background-color: #efc444;
+    transition: all 0.5s ease;
 }
 
 #username {
@@ -70,48 +83,24 @@ body {
     font-family: 'thatsFontFolks';
     font-size: 15vw;
     text-align: center;
-    width: auto;
-    min-width: 400px;
+    width: 50px;
+    min-width: 50px;
 }
 
 .input-container {
-    display: inline-block;
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
     font-family: 'thatsFontFolks';
     font-size: 15vw;
     color: bisque;
 }
 
-.input-container::before,
-.input-container::after {
-    content: '"';
-    position: absolute;
-    top: 0;
+.input-container .quote {
+    font-size: 1em;
+    margin: 0 5px;
 }
-
-.input-container::before {
-    left: -35px;
-}
-
-.input-container::after {
-    right: 0px;
-}
-
-
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
 
 #start-button {
     position: fixed;
@@ -141,6 +130,20 @@ body {
 #start-button:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
+}
+
+#submitNext {
+    margin-top: 50px;
+    width: calc(1vw + 1vh);
+    min-width: 250px;
+    height: 75px;
+    padding-bottom: 35px;
+    color: #252525;
+    font-size: 30px;
+    font-family: 'Playwrite';
+    border: 3px solid rgb(22, 22, 22);
+    border-radius: 50px;
+    background-color: #efc444;
 }
 
 #piano-section {
@@ -288,7 +291,15 @@ body {
     #start-button {
         right: 42vw;
     }
+
+    .what-name {
+        font-size: 25px;
+    }
 }
+
+/* @media screen and (max-height: 400px) {
+    
+} */
 
 @keyframes moveLogo {
     0% {

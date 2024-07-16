@@ -7,7 +7,7 @@ let pianoEnabled = false; // Flag to track if piano keys should be enabled
 
 const playTune = (key) => {
     if (!pianoEnabled) return; // Check if piano is enabled
-    const audio = new Audio(`tunes/${key}.wav`); // create a new Audio object for each key press
+    const audio = new Audio(`LooneyNotes/${key}.wav`); // create a new Audio object for each key press
     audio.play(); // play audio
 
     const clickedKey = document.querySelector(`[data-key="${key}"]`); // get the clicked key element
