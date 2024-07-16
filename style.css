@@ -21,7 +21,6 @@ body {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    margin-top: 50px;
     position: relative;
     transition: all 0.5s ease-in-out;
 }
@@ -30,6 +29,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: -100px;
     color: bisque;
     font-family: 'thatsFontFolks';
     transition: all 0.5s ease-in-out;
@@ -39,7 +39,7 @@ body {
     margin-left: 252px;
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 25px;
+    font-size: 45px;
     color: #eee6b1;
     transition: all .4s ease;
 }
@@ -57,22 +57,10 @@ body {
     margin-top: 20px;
     position: absolute;
     width: 100vw;
+    height: 50vh;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.what-name {
-    display: inline;
-    width: 40vw;
-    color: rgb(16, 16, 16);
-    padding: 5px 25px;
-    font-size: calc(1vw + 1vh);
-    font-family: 'Playwrite';
-    border: 3px solid rgb(22, 22, 22);
-    border-radius: 100px;
-    background-color: #efc444;
-    transition: all 0.5s ease;
 }
 
 #username {
@@ -132,6 +120,16 @@ body {
     transform-origin: bottom left;
 }
 
+.type-your-name {
+    position: fixed;
+    width: 50vw;
+    height: auto;
+    right: -2vw;
+    top: -20vh;
+    z-index: -1;
+    transition: all 1s ease;
+}
+
 #submitNext {
     margin-top: 50px;
     width: calc(1vw + 1vh);
@@ -144,6 +142,12 @@ body {
     border: 3px solid rgb(22, 22, 22);
     border-radius: 50px;
     background-color: #efc444;
+    transition: all 0.5s ease;
+}
+
+#submitNext:hover {
+    transform: scale(1.1);
+    background-color: #fbd255;
 }
 
 #piano-section {
@@ -272,6 +276,14 @@ body {
         height: 180px;
         width: 60px;
     }
+
+    .type-your-name {
+        top: -10vh;
+    }
+
+    #earTraining {
+        margin-left: 200px;
+    }
 }
 
 @media screen and (max-width: 615px) {
@@ -291,15 +303,7 @@ body {
     #start-button {
         right: 42vw;
     }
-
-    .what-name {
-        font-size: 25px;
-    }
 }
-
-/* @media screen and (max-height: 400px) {
-    
-} */
 
 @keyframes moveLogo {
     0% {
@@ -309,7 +313,7 @@ body {
 
     100% {
         margin-top: 0;
-        top: 10px;
+        top: -60px;
         right: 0%;
     }
 }
