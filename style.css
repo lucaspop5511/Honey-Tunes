@@ -72,7 +72,7 @@ body {
     font-size: 15vw;
     text-align: center;
     width: 50px;
-    min-width: 50px;
+    min-width: 20px;
 }
 
 .input-container {

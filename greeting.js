@@ -12,19 +12,21 @@ document.addEventListener('DOMContentLoaded', function () {
     usernameInput.setAttribute('autocomplete', 'off');
 
     usernameInput.addEventListener('input', function () {
-        this.style.width = ((this.value.length) * 0.7) + 0.5 + 'ch';
+        this.style.width = ((this.value.length) * 0.5) + 1.7 + 'ch';
+
 
         const cursorPosition = this.selectionStart;
         let value = usernameInput.value;
 
-        if (this.value.length > maxChars) {
-            this.value = this.value.slice(0, maxChars);
-        }
-
         if (this.value.length > 0) {
             // Capitalize the first letter and lowercase the rest
-            const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
-            this.value = capitalizedValue;
+            if (this.value.length > maxChars) {
+                this.value = this.value.slice(0, maxChars);
+            }
+            else {
+                const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+                this.value = capitalizedValue;
+            }
 
             if (cursorPosition === 0) {
                 this.setSelectionRange(1, 1);
@@ -34,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         this.value = this.value.replace(/[^a-zA-Z]/g, '');
+
     });
 
     startButton.addEventListener('click', function () {
