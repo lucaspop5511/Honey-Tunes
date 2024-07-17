@@ -1,0 +1,191 @@
+#greeting-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+}
+
+#logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -100px;
+    color: bisque;
+    font-family: 'thatsFontFolks';
+    transition: all 0.5s ease-in-out;
+    z-index: 1;
+}
+
+#earTraining {
+    margin-left: 252px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 45px;
+    color: #eee6b1;
+    transition: all .4s ease;
+}
+
+#logoIMG {
+    justify-content: center;
+    width: 50vw;
+    height: auto;
+    min-width: 400px;
+    margin-bottom: 0;
+    transition: all 0.2s ease;
+}
+
+#name-form {
+    margin-top: 20px;
+    position: absolute;
+    width: 100vw;
+    height: 50vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#username {
+    border: none;
+    outline: none;
+    background: none;
+    color: bisque;
+    font-family: 'thatsFontFolks';
+    font-size: 15vw;
+    text-align: center;
+    width: 50px;
+    min-width: 20px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    font-family: 'thatsFontFolks';
+    font-size: 15vw;
+    color: bisque;
+}
+
+.input-container .quote {
+    font-size: 1em;
+    margin: 0 5px;
+}
+
+#start-button {
+    position: fixed;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    bottom: 7vh;
+    right: 47vw;
+    background-color: #c6474700;
+    border: none;
+    font-family: 'Playwrite';
+    font-size: 30px;
+    transition: none;
+    z-index: 5;
+}
+
+#start-button:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 10px;
+    left: 0px;
+    transform: scaleX(0);
+    background: #000000;
+    transform-origin: bottom right;
+    transition: transform 0.5s ease-out;
+}
+
+#start-button:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.type-your-name {
+    position: fixed;
+    width: 50vw;
+    height: auto;
+    right: -2vw;
+    top: -20vh;
+    z-index: -1;
+    transition: all 0.5s ease;
+}
+
+#submitNext {
+    margin-top: 50px;
+    width: calc(1vw + 1vh);
+    min-width: 250px;
+    height: 75px;
+    padding-bottom: 35px;
+    color: #252525;
+    font-size: 30px;
+    font-family: 'Playwrite';
+    border: 3px solid rgb(22, 22, 22);
+    border-radius: 50px;
+    background-color: #efc444;
+    transition: all 0.5s ease;
+    z-index: 1;
+}
+
+#submitNext:hover {
+    transform: scale(1.1);
+    background-color: #fad462;
+    z-index: 10;
+}
+
+#logo-section.move-up {
+    animation: moveLogo 0.5s forwards;
+    position: fixed;
+    width: 100%;
+}
+
+#logoIMG.shrink {
+    animation: shrinkLogo 0.9s forwards;
+}
+
+@media screen and (max-width: 815px) {
+    .type-your-name {
+        top: -10vh;
+    }
+
+    #earTraining {
+        margin-left: 200px;
+    }
+}
+
+@media screen and (max-width: 615px) {
+    #start-button {
+        transition: all 1s;
+        right: 42vw;
+    }
+}
+
+@keyframes moveLogo {
+    0% {
+        top: 20%;
+        right: 0%;
+        z-index: 1;
+    }
+
+    100% {
+        margin-top: 0;
+        top: -60px;
+        right: 0%;
+        z-index: 5;
+    }
+}
+
+@keyframes shrinkLogo {
+    0% {
+        width: 50vw;
+    }
+
+    100% {
+        min-width: 200px;
+        width: 200px;
+    }
+}
