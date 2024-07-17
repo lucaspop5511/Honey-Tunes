@@ -121,14 +121,33 @@ function playLevelSounds(level) {
     playNext();
 }
 
-// Function to update the level display
+// Function to update the level and difficulty display
 function updateLevelDisplay() {
-    document.querySelector('.level').innerHTML = `Level:<br>${currentLevel}`;
+    const levelDisplay = document.querySelector('.level');
+    const difficultyDisplay = document.querySelector('.difficulty');
+
+    let difficulty;
+    if (currentLevel === 0) {
+        difficulty = "Tutorial";
+    } else if (currentLevel >= 1 && currentLevel <= 3) {
+        difficulty = "Easy";
+    } else if (currentLevel >= 4 && currentLevel <= 6) {
+        difficulty = "Medium";
+    } else if (currentLevel >= 7 && currentLevel <= 9) {
+        difficulty = "Hard";
+    } else if (currentLevel >= 10 && currentLevel <= 12) {
+        difficulty = "Very Hard";
+    } else if (currentLevel >= 13 && currentLevel <= 15) {
+        difficulty = "Impossible";
+    }
+
+    levelDisplay.innerHTML = `Level:<br>${currentLevel}`;
+    difficultyDisplay.innerHTML = `Difficulty:<br>${difficulty}`;
 }
 
 // Example usage
 let currentLevel = 0;
-updateLevelDisplay(); // Initialize the level display
+updateLevelDisplay(); // Initialize the level and difficulty display
 
 const playButton = document.querySelector('.play-button');
 playButton.addEventListener('click', () => {

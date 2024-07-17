@@ -46,18 +46,6 @@
     transform: translate(-50%, -50%);
 }
 
-#username {
-    border: none;
-    outline: none;
-    background: none;
-    color: bisque;
-    font-family: 'thatsFontFolks';
-    font-size: 15vw;
-    text-align: center;
-    width: 50px;
-    min-width: 20px;
-}
-
 .input-container {
     display: flex;
     align-items: center;
@@ -71,6 +59,22 @@
 .input-container .quote {
     font-size: 1em;
     margin: 0 5px;
+}
+
+/* .quote {
+
+} */
+
+#username {
+    border: none;
+    outline: none;
+    background: none;
+    min-width: 30px;
+    color: bisque;
+    font-size: 10rem;
+    font-family: 'thatsFontFolks';
+    text-align: center;
+    caret-color: transparent;
 }
 
 #start-button {

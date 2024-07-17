@@ -1,0 +1,61 @@
+.honey-jar-container {
+    position: absolute;
+    bottom: 100px;
+    left: -10px;
+    width: 30px;
+    height: auto;
+    z-index: 1;
+}
+
+.honey-jar-container:hover {
+    z-index: 5;
+}
+
+.honey-jar {
+    position: fixed;
+    cursor: pointer;
+}
+
+.jar-menu {
+    position: fixed;
+    width: 150px;
+    max-width: 150px;
+    height: auto;
+}
+
+#jar-lid {
+    position: absolute;
+    left: 0;
+    bottom: -85px;
+    transition: bottom .7s ease;
+}
+
+#jar {
+    display: block;
+}
+
+.menu {
+    position: absolute;
+    bottom: 60px;
+    /* Adjust to be just above the jar lid */
+    left: 10px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-item {
+    width: 50px;
+    /* Adjust as needed */
+    height: 50px;
+    /* Adjust as needed */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.menu.show .menu-item {
+    opacity: 1;
+    transform: translateY(0);
+}

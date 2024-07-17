@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
     usernameInput.addEventListener('input', function () {
         this.style.width = ((this.value.length) * 0.5) + 1.7 + 'ch';
 
-
         const cursorPosition = this.selectionStart;
         let value = usernameInput.value;
 
@@ -70,3 +69,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // Disable piano keys until name is submitted
     disablePiano();
 });
+
+// script.js
+function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    const honeyJarLid = document.getElementById('jar-lid');
+    let isOpened = menu.style.display === 'flex' ? true : false;
+
+    if (isOpened) {
+        honeyJarLid.style.bottom = '-85px';
+    }
+    else {
+        honeyJarLid.style.bottom = '180px';
+    }
+
+    menu.classList.toggle('show');
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+}
