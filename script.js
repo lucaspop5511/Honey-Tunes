@@ -8,7 +8,7 @@ let sequenceIsPlaying = false;
 
 const playTune = (key) => {
     if (!pianoEnabled || sequenceIsPlaying) return; // Check if piano is enabled
-    const audio = new Audio(`LooneyNotes/${key}.wav`); // create a new Audio object for each key press
+    const audio = new Audio(`audio/PianoNotes/${key}.wav`); // create a new Audio object for each key press
     audio.play(); // play audio
 
     const clickedKey = document.querySelector(`[data-key="${key}"]`); // get the clicked key element
@@ -20,7 +20,7 @@ const playTune = (key) => {
 
 const playSequence = (key) => {
     if (!pianoEnabled) return; // Check if piano is enabled
-    const audio = new Audio(`LooneyNotes/${key}.wav`); // create a new Audio object for each key press
+    const audio = new Audio(`audio/PianoNotes/${key}.wav`); // create a new Audio object for each key press
     audio.play(); // play audio
 
     const clickedKey = document.querySelector(`[data-key="${key}"]`); // get the clicked key element
@@ -39,7 +39,7 @@ pianoKeys.forEach(key => {
 });
 
 const pressedKey = (e) => {
-    if (!pianoEnabled) return; // Check if piano is enabled
+    if (!pianoEnabled) return;
     const key = e.key.toLowerCase();
     if (allKeys.includes(key) && !pressedKeys.has(key)) {
         playTune(key);
@@ -48,7 +48,7 @@ const pressedKey = (e) => {
 }
 
 const releasedKey = (e) => {
-    if (!pianoEnabled) return; // Check if piano is enabled
+    if (!pianoEnabled) return;
     const key = e.key.toLowerCase();
     if (pressedKeys.has(key)) {
         pressedKeys.delete(key);

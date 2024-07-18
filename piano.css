@@ -13,6 +13,8 @@
     flex-direction: row;
     width: 100%;
     justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .screen {
@@ -32,9 +34,24 @@
 
 .play-button {
     margin-right: 25px;
-    width: 100px;
-    height: auto;
+    width: 10vw;
+    height: 10vw;
+    min-width: 30px;
     border-radius: 15px;
+    font-size: 5vw;
+}
+
+.play-button i {
+    transform: translateX(-7%);
+}
+
+.record-button {
+    margin-left: 25px;
+    width: 10vw;
+    height: 10vw;
+    min-width: 30px;
+    border-radius: 15px;
+    font-size: 5vw;
 }
 
 .wrapper {
