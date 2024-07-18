@@ -121,6 +121,14 @@
     color: #888888;
 }
 
+.key.correct {
+    background: green;
+}
+
+.key.incorrect {
+    background: red;
+}
+
 
 
 @media screen and (max-width: 815px) {

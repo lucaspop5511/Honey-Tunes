@@ -6,6 +6,7 @@ let allKeys = [];
 let pressedKeys = new Set();
 let pianoEnabled = false;
 let chordIsPlaying = false;
+let recording = false;
 let currentLevel = 0;
 
 const chords = {
@@ -39,7 +40,6 @@ const playLevelSounds = (level) => {
         recordButton.disabled = false;
     };
 
-    disablePiano();
     playButton.disabled = true;
 };
 
@@ -49,6 +49,9 @@ const pressedKey = (e) => {
     if (allKeys.includes(key) && !pressedKeys.has(key)) {
         playTune(key);
         pressedKeys.add(key);
+        if (recording) {
+            verifyUserInput(key);
+        }
     }
 };
 
@@ -95,6 +98,41 @@ const updateLevelDisplay = () => {
     difficultyDisplay.innerHTML = `Difficulty:<br>${difficulty}`;
 };
 
+const verifyUserInput = (key) => {
+    const chordKeys = chords[currentLevel].replace('.wav', '').split('');
+    const keyElement = document.querySelector(`[data-key="${key}"]`);
+
+    if (chordKeys.includes(key)) {
+        keyElement.classList.add("correct");
+        keyElement.classList.remove("incorrect");
+    } else {
+        keyElement.classList.add("incorrect");
+        keyElement.classList.remove("correct");
+    }
+
+    // Check if all chord keys are guessed
+    const allCorrect = chordKeys.every(chordKey => {
+        return document.querySelector(`[data-key="${chordKey}"]`).classList.contains("correct");
+    });
+
+    if (allCorrect) {
+        // Disable recording and reset state
+        recording = false;
+        playButton.disabled = false;
+        recordButton.disabled = true;
+        // Move to the next level or any other logic
+        currentLevel++;
+        updateLevelDisplay();
+        resetKeyColors();
+    }
+};
+
+const resetKeyColors = () => {
+    pianoKeys.forEach(key => {
+        key.classList.remove("correct", "incorrect");
+    });
+};
+
 pianoKeys.forEach(key => {
     allKeys.push(key.dataset.key);
     key.addEventListener("click", () => {
@@ -112,8 +150,8 @@ playButton.addEventListener('click', () => {
 });
 
 recordButton.addEventListener('click', () => {
-    enablePiano();
     recordButton.disabled = true;
+    recording = true;
 });
 
 // Initialize the level and difficulty display
