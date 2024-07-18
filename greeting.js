@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     usernameInput.setAttribute('autocomplete', 'off');
 
     usernameInput.addEventListener('input', function () {
-        this.style.width = ((this.value.length) * 0.5) + 1.7 + 'ch';
+        this.style.width = ((this.value.length) * 0.5) + 3.5 + 'ch';
 
         const cursorPosition = this.selectionStart;
         let value = usernameInput.value;
@@ -70,19 +70,29 @@ document.addEventListener('DOMContentLoaded', function () {
     disablePiano();
 });
 
-// script.js
 function toggleMenu() {
     const menu = document.querySelector('.menu');
     const honeyJarLid = document.getElementById('jar-lid');
-    let isOpened = menu.style.display === 'flex' ? true : false;
+    const honeyJar = document.getElementById('honey-jar');
+    let isOpened = menu.style.display === 'flex';
 
     if (isOpened) {
         honeyJarLid.style.bottom = '-85px';
-    }
-    else {
-        honeyJarLid.style.bottom = '180px';
-    }
+        honeyJar.style.zIndex = '1';
+        setTimeout(() => {
+            menu.classList.remove('show');
+        }, 30);
+        setTimeout(() => {
+            menu.style.display = 'none';
+        }, 500);
 
-    menu.classList.toggle('show');
-    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    } else {
+        honeyJarLid.style.bottom = '110px';
+        honeyJar.style.zIndex = '6';
+        menu.style.display = 'flex';
+        setTimeout(() => {
+            menu.classList.add('show');
+        }, 10);
+    }
 }
+
