@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     nameForm.addEventListener('submit', function (event) {
         event.preventDefault();
+        document.body.classList.add('zoomed');
         const username = usernameInput.value.trim();
         if (username) {
             // Store username (could be sent to server later)

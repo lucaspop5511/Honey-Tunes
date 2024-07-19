@@ -13,15 +13,26 @@ let startingNote = '';
 let activeAudio = {};
 
 const chords = {
-    0: ['a.wav'],
-    1: ['ad.wav', 'ag.wav', 'ak.wav'],
+    0: ['a.wav'], // Tutorial
+    1: ['ad.wav', 'ag.wav', 'ak.wav'], // Very Easy
     2: ['dj.wav', 'sh.wav', 'd;.wav'],
     3: ['fh.wav', 'gj.wav', 'h;.wav'],
-    4: ['af.wav', 'ah.wav', 'as.wav', 'al.wav', 'ae.wav', 'au.wav', 'aj.wav', 'a;.wav'],
+    4: ['af.wav', 'ah.wav', 'as.wav', 'al.wav', 'ae.wav', 'au.wav', 'aj.wav', 'a;.wav'], // Easy
     5: ['sf.wav', 'dy.wav', 'fl.wav', 'tu.wav', 'st.wav', 'hl.wav', 'jl.wav', 'dg.wav'],
     6: ['at.wav', 'ay.wav', 'du.wav', 'hp.wav', 'sy.wav', 'go.wav', 'fj.wav'],
-    // Add all other level chords here...
-    18: ['sh.wav', 'sh.wav', 'sh.wav']
+    7: ['adg.wav', 'agk.wav', 'afk.wav', 'adk.wav'], // Medium
+    8: ['afh.wav', 'afg.wav', 'adh.wav', 'agj.wav', 'aeg.wav', 'ag;.wav'],
+    9: ['sgj.wav', 'agu.wav', 'afy.wav', 'dyj.wav', 'sfh.wav', 'dgj.wav', 'fyk.wav', 'dhk.wav'],
+    10: ['aet.wav', 'agp.wav', 'ath.wav', 'af;.wav'], // Hard
+    11: ['awf.wav', 'afu.wav', 'atl.wav', 'aeu.wav', 'aey.wav', 'ayp.wav', 'at;.wav'],
+    12: ['stu.wav', 'sfy.wav', 'dgu.wav', 'dul.wav', 'tjo.wav', 'etk.wav', 'wfj.wav', 'ghp.wav'],
+    13: ['adgj.wav', 'adgu.wav', 'asdg.wav', 'aegl.wav', 'afg;.wav', 'afh;.wav'], // Very Hard
+    14: ['aeth.wav', 'sfyj.wav', 'dgou.wav', 'ethk.wav', 'wdgj.wav', 'dgul.wav'],
+    15: ['awfk.wav', 'sdto.wav', 'wfgu.wav', 'dtjp.wav', 'dyho.wav', 'wtgj.wav'],
+    16: ['afup.wav', 'wtj;.wav', 'fhj;.wav'], // Impossible
+    17: ['dgyk.wav', 'egjl.wav', 'dtuk.wav', 'atup.wav', 'awfp.wav'],
+    18: ['atg;.wav', 'wtul.wav', 'eyho.wav', 'aftu.wav', 'tyul.wav'],
+    19: ['adyup.wav', 'wfhj;.wav', 'aegjl.wav', 'atgj;'] // Perfect Pitch
 };
 
 const playTune = (key) => {

@@ -15,6 +15,12 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
+    transition: background-size 1s ease, background-position 1s ease;
+}
+
+body.zoomed {
+    background-size: 400%;
+    background-position: center center;
 }
 
 #svgOverlay {
