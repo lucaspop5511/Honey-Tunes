@@ -129,6 +129,17 @@
     background: red;
 }
 
+.key.starting-note {
+    background: rgb(211, 216, 211);
+}
+
+.key.key.starting-note span {
+    color: black;
+}
+
+.key.key.starting-note .black span {
+    color: rgb(230, 236, 229);
+}
 
 
 @media screen and (max-width: 815px) {

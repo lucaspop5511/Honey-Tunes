@@ -8,30 +8,59 @@ let pianoEnabled = false;
 let chordIsPlaying = false;
 let recording = false;
 let currentLevel = 0;
+let currentChord = '';
+let startingNote = '';
+let activeAudio = {};
 
 const chords = {
-    0: 'ad.wav',
-    1: 'ag.wav',
-    2: 'ak.wav',
+    0: ['a.wav'],
+    1: ['ad.wav', 'ag.wav', 'ak.wav'],
+    2: ['dj.wav', 'sh.wav', 'd;.wav'],
+    3: ['fh.wav', 'gj.wav', 'h;.wav'],
+    4: ['af.wav', 'ah.wav', 'as.wav', 'al.wav', 'ae.wav', 'au.wav', 'aj.wav', 'a;.wav'],
+    5: ['sf.wav', 'dy.wav', 'fl.wav', 'tu.wav', 'st.wav', 'hl.wav', 'jl.wav', 'dg.wav'],
+    6: ['at.wav', 'ay.wav', 'du.wav', 'hp.wav', 'sy.wav', 'go.wav', 'fj.wav'],
     // Add all other level chords here...
-    18: 'sh.wav'
+    18: ['sh.wav', 'sh.wav', 'sh.wav']
 };
 
 const playTune = (key) => {
     if (!pianoEnabled || chordIsPlaying) return;
-    const audio = new Audio(`audio/PianoNotes/${key}.wav`);
-    audio.play();
 
-    const clickedKey = document.querySelector(`[data-key="${key}"]`);
-    clickedKey.classList.add("active");
-    setTimeout(() => {
-        clickedKey.classList.remove("active");
-    }, 150);
+    const audio = new Audio(`audio/BetterPianoNotes/${key}.wav`);
+    audio.volume = 1;
+    audio.play();
+    activeAudio[key] = audio;
+};
+
+const stopTune = (key) => {
+    if (activeAudio[key]) {
+        const audio = activeAudio[key];
+
+        const fadeOutInterval = setInterval(() => {
+            if (audio.volume > 0.1) {
+                audio.volume -= 0.1;
+            } else {
+                audio.pause();
+                clearInterval(fadeOutInterval);
+                audio.remove();
+                delete activeAudio[key];
+            }
+        }, 50);
+
+        setTimeout(() => {
+            clearInterval(fadeOutInterval);
+            audio.pause();
+            audio.remove();
+            delete activeAudio[key];
+        }, 550);
+    }
 };
 
 const playLevelSounds = (level) => {
     chordIsPlaying = true;
-    const audio = new Audio(`audio/Chords/${chords[level]}`);
+
+    const audio = new Audio(`audio/Chords/${currentChord}`);
     audio.play();
 
     audio.onended = () => {
@@ -49,6 +78,10 @@ const pressedKey = (e) => {
     if (allKeys.includes(key) && !pressedKeys.has(key)) {
         playTune(key);
         pressedKeys.add(key);
+
+        const clickedKey = document.querySelector(`[data-key="${key}"]`);
+        clickedKey.classList.add("active");
+
         if (recording) {
             verifyUserInput(key);
         }
@@ -59,7 +92,11 @@ const releasedKey = (e) => {
     if (!pianoEnabled) return;
     const key = e.key.toLowerCase();
     if (pressedKeys.has(key)) {
+        stopTune(key);
         pressedKeys.delete(key);
+
+        const clickedKey = document.querySelector(`[data-key="${key}"]`);
+        clickedKey.classList.remove("active");
     }
 };
 
@@ -72,6 +109,10 @@ const disablePiano = () => {
 };
 
 const updateLevelDisplay = () => {
+    currentChord = chords[currentLevel][Math.floor(Math.random() * chords[currentLevel].length)];
+    startingNote = currentChord[0]; // Extract the starting note from the chord name
+    highlightStartingNote();
+
     const levelDisplay = document.querySelector('.level');
     const difficultyDisplay = document.querySelector('.difficulty');
 
@@ -99,7 +140,7 @@ const updateLevelDisplay = () => {
 };
 
 const verifyUserInput = (key) => {
-    const chordKeys = chords[currentLevel].replace('.wav', '').split('');
+    const chordKeys = currentChord.replace('.wav', '').split('');
     const keyElement = document.querySelector(`[data-key="${key}"]`);
 
     if (chordKeys.includes(key)) {
@@ -120,23 +161,43 @@ const verifyUserInput = (key) => {
         recording = false;
         playButton.disabled = false;
         recordButton.disabled = true;
+        // Visual feedback for completion
+        recordButton.querySelector('i').className = 'fa-solid fa-circle-check';
         // Move to the next level or any other logic
         currentLevel++;
-        updateLevelDisplay();
         resetKeyColors();
+        updateLevelDisplay();
     }
 };
 
 const resetKeyColors = () => {
     pianoKeys.forEach(key => {
-        key.classList.remove("correct", "incorrect");
+        key.classList.remove("correct", "incorrect", "starting-note", "active");
     });
+};
+
+const highlightStartingNote = () => {
+    resetKeyColors();
+    const startingNoteKey = document.querySelector(`[data-key="${startingNote}"]`);
+    startingNoteKey.classList.add("starting-note");
 };
 
 pianoKeys.forEach(key => {
     allKeys.push(key.dataset.key);
-    key.addEventListener("click", () => {
-        if (pianoEnabled) playTune(key.dataset.key);
+    key.addEventListener("mousedown", () => {
+        if (pianoEnabled) {
+            playTune(key.dataset.key);
+            key.classList.add("active");
+        }
+        if (recording) {
+            verifyUserInput(key.dataset.key);
+        }
+    });
+    key.addEventListener("mouseup", () => {
+        if (pianoEnabled) {
+            stopTune(key.dataset.key);
+            key.classList.remove("active");
+        }
     });
 });
 
@@ -146,12 +207,18 @@ document.addEventListener("keyup", releasedKey);
 playButton.addEventListener('click', () => {
     playButton.disabled = true;
     recordButton.disabled = true;
+
+    // Reset the record button icon to its original state
+    recordButton.querySelector('i').className = 'fa-solid fa-circle';
+
     playLevelSounds(currentLevel);
 });
+
 
 recordButton.addEventListener('click', () => {
     recordButton.disabled = true;
     recording = true;
+    enablePiano();
 });
 
 // Initialize the level and difficulty display
