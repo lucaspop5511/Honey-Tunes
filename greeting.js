@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     nameForm.addEventListener('submit', function (event) {
         event.preventDefault();
-        document.body.classList.add('zoomed');
+        document.body.classList.add('blured');
         const username = usernameInput.value.trim();
         if (username) {
             // Store username (could be sent to server later)
@@ -79,7 +79,6 @@ function toggleMenu() {
 
     if (isOpened) {
         honeyJarLid.style.bottom = '-85px';
-        honeyJar.style.zIndex = '1';
         setTimeout(() => {
             menu.classList.remove('show');
         }, 30);
@@ -89,7 +88,6 @@ function toggleMenu() {
 
     } else {
         honeyJarLid.style.bottom = '110px';
-        honeyJar.style.zIndex = '6';
         menu.style.display = 'flex';
         setTimeout(() => {
             menu.classList.add('show');
@@ -97,3 +95,8 @@ function toggleMenu() {
     }
 }
 
+
+window.addEventListener('load', function () {
+    const loadingScreen = document.getElementById('loading-screen');
+    loadingScreen.style.display = 'none';
+});
