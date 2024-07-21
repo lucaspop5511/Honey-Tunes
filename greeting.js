@@ -6,10 +6,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const logoSection = document.getElementById('logo-section');
     const logoIMG = document.getElementById('logoIMG');
     const earTraining = document.getElementById('earTraining');
+    const body = document.body;
 
     const maxChars = 10;
 
     usernameInput.setAttribute('autocomplete', 'off');
+
+    startButton.addEventListener('mouseenter', function () {
+        body.classList.add('hover-vignette');
+    });
+
+    startButton.addEventListener('mouseleave', function () {
+        body.classList.remove('hover-vignette');
+    });
 
     usernameInput.addEventListener('input', function () {
         this.style.maxWidth = ((this.value.length) * 0.5) + 3.5 + 'ch';
@@ -53,6 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
     nameForm.addEventListener('submit', function (event) {
         event.preventDefault();
         document.body.classList.add('blured');
+        body.classList.add('hover-vignette');
+
         const username = usernameInput.value.trim();
         if (username) {
             // Store username (could be sent to server later)
