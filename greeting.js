@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     usernameInput.setAttribute('autocomplete', 'off');
 
     usernameInput.addEventListener('input', function () {
-        this.style.width = ((this.value.length) * 0.5) + 3.5 + 'ch';
+        this.style.maxWidth = ((this.value.length) * 0.5) + 3.5 + 'ch';
 
         const cursorPosition = this.selectionStart;
         let value = usernameInput.value;

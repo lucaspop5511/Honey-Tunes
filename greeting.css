@@ -61,15 +61,12 @@
     margin: 0 0px;
 }
 
-/* .quote {
-
-} */
-
 #username {
     border: none;
     outline: none;
     background: none;
     min-width: 30px;
+    max-width: 50px;
     color: bisque;
     font-size: 10rem;
     font-family: 'thatsFontFolks';
