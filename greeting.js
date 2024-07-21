@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('username', username);
 
             // Hide greeting section and show piano section
-            document.getElementById('greeting-section').style.display = 'none';
+            document.getElementById('name-form').style.display = 'none';
             pianoSection.style.display = 'block';
 
             // Enable piano keys
