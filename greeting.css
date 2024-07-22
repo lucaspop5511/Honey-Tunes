@@ -80,11 +80,16 @@
     bottom: 7vh;
     right: 47vw;
     background-color: #c6474700;
+    color: #1c160b;
     border: none;
     font-family: 'Playwrite';
     font-size: 30px;
-    transition: none;
+    transition: color 0.5s ease;
     z-index: 5;
+}
+
+#start-button:hover {
+    color: #efc11e;
 }
 
 #start-button:after {
@@ -95,7 +100,7 @@
     bottom: 10px;
     left: 0px;
     transform: scaleX(0);
-    background: #000000;
+    background: #efc11e;
     transform-origin: bottom right;
     transition: transform 0.5s ease-out;
 }
