@@ -71,6 +71,7 @@
     font-family: 'thatsFontFolks';
     text-align: center;
     caret-color: transparent;
+    overflow-x: visible;
 }
 
 #start-button {

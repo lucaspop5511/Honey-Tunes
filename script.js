@@ -11,6 +11,7 @@ let currentLevel = 0;
 let currentChord = '';
 let startingNote = '';
 let activeAudio = {};
+let lives = 3;
 
 const chords = {
     0: ['a.wav'], // Tutorial
@@ -126,6 +127,7 @@ const updateLevelDisplay = () => {
 
     const levelDisplay = document.querySelector('.level');
     const difficultyDisplay = document.querySelector('.difficulty');
+    const livesDisplay = document.querySelector('.lives');
 
     let difficulty;
     if (currentLevel === 0) {
@@ -148,18 +150,26 @@ const updateLevelDisplay = () => {
 
     levelDisplay.innerHTML = `Level:<br>${currentLevel}`;
     difficultyDisplay.innerHTML = `Difficulty:<br>${difficulty}`;
+    livesDisplay.innerHTML = `Lives:<br>${lives}`;
 };
 
 const verifyUserInput = (key) => {
     const chordKeys = currentChord.replace('.wav', '').split('');
     const keyElement = document.querySelector(`[data-key="${key}"]`);
 
-    if (chordKeys.includes(key)) {
+    if (chordKeys.includes(key)) { // correct
         keyElement.classList.add("correct");
         keyElement.classList.remove("incorrect");
-    } else {
+    } else { // incorrect
         keyElement.classList.add("incorrect");
         keyElement.classList.remove("correct");
+        lives--;
+        if (lives <= 0) {
+            // Handle game over
+            addUserToLeaderboard(username, currentLevel);
+            redirectToLeaderboard();
+            return;
+        }
     }
 
     // Check if all chord keys are guessed
@@ -234,3 +244,8 @@ recordButton.addEventListener('click', () => {
 
 // Initialize the level and difficulty display
 updateLevelDisplay();
+
+
+const redirectToLeaderboard = () => {
+    window.location.href = 'leaderboard.html';
+};
