@@ -6,6 +6,24 @@
     margin-top: 20px;
     border: solid 2px #505050;
     z-index: 5;
+    pointer-events: none;
+    transform: scale(0);
+    animation: fade 1.5s ease 1s forwards;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .detail-section {
