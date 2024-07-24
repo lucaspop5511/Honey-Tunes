@@ -153,6 +153,11 @@ const updateLevelDisplay = () => {
     livesDisplay.innerHTML = `Lives:<br>${lives}`;
 };
 
+const updateLivesDisplay = () => {
+    const livesDisplay = document.querySelector('.lives');
+    livesDisplay.innerHTML = `Lives:<br>${lives}`;
+};
+
 const verifyUserInput = (key) => {
     const chordKeys = currentChord.replace('.wav', '').split('');
     const keyElement = document.querySelector(`[data-key="${key}"]`);
@@ -164,6 +169,7 @@ const verifyUserInput = (key) => {
         keyElement.classList.add("incorrect");
         keyElement.classList.remove("correct");
         lives--;
+        updateLivesDisplay();
         if (lives <= 0) {
             // Handle game over
             addUserToLeaderboard(currentLevel);
@@ -178,6 +184,12 @@ const verifyUserInput = (key) => {
     });
 
     if (allCorrect) {
+        if (currentLevel > 18) {
+            // Handle game over
+            addUserToLeaderboard(currentLevel);
+            redirectToLeaderboard();
+            return;
+        }
         // Disable recording and reset state
         recording = false;
         playButton.disabled = false;
@@ -262,5 +274,7 @@ const addUserToLeaderboard = (level) => {
 };
 
 const redirectToLeaderboard = () => {
-    window.location.href = 'leaderboard.html';
+    setTimeout(() => {
+        window.location.href = 'leaderboard.html';
+    }, 1000);
 };
