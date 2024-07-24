@@ -166,7 +166,7 @@ const verifyUserInput = (key) => {
         lives--;
         if (lives <= 0) {
             // Handle game over
-            addUserToLeaderboard(username, currentLevel);
+            addUserToLeaderboard(currentLevel);
             redirectToLeaderboard();
             return;
         }
@@ -245,6 +245,21 @@ recordButton.addEventListener('click', () => {
 // Initialize the level and difficulty display
 updateLevelDisplay();
 
+const addUserToLeaderboard = (level) => {
+    const username = localStorage.getItem('username');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxT4yVHB3og3t72cvImaJUrQ8dyrPlRi1YKRkxbF5lBoWBddqa7MR98iFzXRY_m2TM6/exec';
+    fetch(scriptURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+            action: 'add',
+            username: username,
+            level: level
+        })
+    });
+};
 
 const redirectToLeaderboard = () => {
     window.location.href = 'leaderboard.html';
