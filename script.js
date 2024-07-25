@@ -128,6 +128,7 @@ const updateLevelDisplay = () => {
     const levelDisplay = document.querySelector('.level');
     const difficultyDisplay = document.querySelector('.difficulty');
     const livesDisplay = document.querySelector('.lives');
+    const progressDisplay = document.querySelector('.progress');
 
     let difficulty;
     if (currentLevel === 0) {
@@ -148,14 +149,21 @@ const updateLevelDisplay = () => {
         difficulty = "Perfect Pitch?";
     }
 
-    levelDisplay.innerHTML = `Level:<br>${currentLevel}`;
-    difficultyDisplay.innerHTML = `Difficulty:<br>${difficulty}`;
-    livesDisplay.innerHTML = `Lives:<br>${lives}`;
+    levelDisplay.innerHTML = `Level: ${currentLevel}`;
+    difficultyDisplay.innerHTML = `Difficulty: ${difficulty}`;
+    livesDisplay.innerHTML = `Lives: ${lives}`;
+    progressDisplay.innerHTML = `0/${currentChord.length - 4}`;
+};
+
+const updateProgressDisplay = () => {
+    const progressDisplay = document.querySelector('.progress');
+    const correctKeys = document.querySelectorAll('.correct').length;
+    progressDisplay.innerHTML = `${correctKeys}/${currentChord.length - 4}`;
 };
 
 const updateLivesDisplay = () => {
     const livesDisplay = document.querySelector('.lives');
-    livesDisplay.innerHTML = `Lives:<br>${lives}`;
+    livesDisplay.innerHTML = `Lives: ${lives}`;
 };
 
 const verifyUserInput = (key) => {
@@ -178,6 +186,8 @@ const verifyUserInput = (key) => {
         }
     }
 
+    updateProgressDisplay();
+
     // Check if all chord keys are guessed
     const allCorrect = chordKeys.every(chordKey => {
         return document.querySelector(`[data-key="${chordKey}"]`).classList.contains("correct");
@@ -196,10 +206,12 @@ const verifyUserInput = (key) => {
         recordButton.disabled = true;
         // Visual feedback for completion
         recordButton.querySelector('i').className = 'fa-solid fa-circle-check';
-        // Move to the next level or any other logic
-        currentLevel++;
-        resetKeyColors();
-        updateLevelDisplay();
+        // Move to the next level after 1.5s
+        setTimeout(() => {
+            currentLevel++;
+            resetKeyColors();
+            updateLevelDisplay();
+        }, 1500);
     }
 };
 

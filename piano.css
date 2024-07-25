@@ -6,7 +6,6 @@
     margin-top: 20px;
     border: solid 2px #505050;
     z-index: 5;
-    pointer-events: none;
     transform: scale(0);
     animation: fade 1.5s ease 1s forwards;
 }
@@ -38,16 +37,22 @@
 .screen {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
-    text-align: center;
+    text-align: left;
     width: 60%;
     height: 100px;
-    padding: 10px;
+    padding: 10px 20px;
     border: solid 1px #727272;
     border-radius: 15px;
     background-color: #000000;
     color: whitesmoke;
+}
+
+.progress {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
 }
 
 .play-button {
