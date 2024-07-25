@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const leaderboardTableBody = document.getElementById('leaderboard-body');
-    const googleScriptURL = 'https://script.google.com/macros/s/AKfycbxT4yVHB3og3t72cvImaJUrQ8dyrPlRi1YKRkxbF5lBoWBddqa7MR98iFzXRY_m2TM6/exec';
+    const googleScriptURL = 'https://script.google.com/macros/s/AKfycbzPFg9ERXcw5_-J-XGzeQh1QD72OTJZisQyRNXyNTFgZYtVDBAXT-qV2qu-2YEuZzwH/exec';
 
     const displayLeaderboard = async () => {
         try {
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <tr>
                         <td>${entry.rank}</td>
                         <td>${entry.username}</td>
-                        <td>${entry.level}</td>
+                        <td>${entry.score}</td>
                     </tr>
                 `).join('');
                 leaderboardTableBody.innerHTML = leaderboardRows;
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    window.addUserToLeaderboard = async (username, level) => {
+    window.addUserToLeaderboard = async (username, score) => {
         try {
             await fetch(googleScriptURL, {
                 method: 'POST',
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: new URLSearchParams({
                     action: 'add',
                     username: username,
-                    level: level
+                    score: score
                 })
             });
             displayLeaderboard();

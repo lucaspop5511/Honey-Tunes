@@ -12,6 +12,7 @@ let currentChord = '';
 let startingNote = '';
 let activeAudio = {};
 let lives = 3;
+let score = 0;
 
 const chords = {
     0: ['a.wav'], // Tutorial
@@ -173,6 +174,7 @@ const verifyUserInput = (key) => {
     if (chordKeys.includes(key)) { // correct
         keyElement.classList.add("correct");
         keyElement.classList.remove("incorrect");
+        score++;
     } else { // incorrect
         keyElement.classList.add("incorrect");
         keyElement.classList.remove("correct");
@@ -180,7 +182,7 @@ const verifyUserInput = (key) => {
         updateLivesDisplay();
         if (lives <= 0) {
             // Handle game over
-            addUserToLeaderboard(currentLevel);
+            addUserToLeaderboard(score);
             redirectToLeaderboard();
             return;
         }
@@ -194,20 +196,21 @@ const verifyUserInput = (key) => {
     });
 
     if (allCorrect) {
-        if (currentLevel > 18) {
+        if (currentLevel === 19) {
             // Handle game over
-            addUserToLeaderboard(currentLevel);
+            addUserToLeaderboard(score);
             redirectToLeaderboard();
             return;
         }
         // Disable recording and reset state
         recording = false;
-        playButton.disabled = false;
+        playButton.disabled = true;
         recordButton.disabled = true;
         // Visual feedback for completion
         recordButton.querySelector('i').className = 'fa-solid fa-circle-check';
         // Move to the next level after 1.5s
         setTimeout(() => {
+            playButton.disabled = false;
             currentLevel++;
             resetKeyColors();
             updateLevelDisplay();
@@ -252,6 +255,7 @@ document.addEventListener("keyup", releasedKey);
 playButton.addEventListener('click', () => {
     playButton.disabled = true;
     recordButton.disabled = true;
+    recording = false;
 
     // Reset the record button icon to its original state
     recordButton.querySelector('i').className = 'fa-solid fa-circle';
@@ -269,9 +273,9 @@ recordButton.addEventListener('click', () => {
 // Initialize the level and difficulty display
 updateLevelDisplay();
 
-const addUserToLeaderboard = (level) => {
+const addUserToLeaderboard = (score) => {
     const username = localStorage.getItem('username');
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxT4yVHB3og3t72cvImaJUrQ8dyrPlRi1YKRkxbF5lBoWBddqa7MR98iFzXRY_m2TM6/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzPFg9ERXcw5_-J-XGzeQh1QD72OTJZisQyRNXyNTFgZYtVDBAXT-qV2qu-2YEuZzwH/exec';
     fetch(scriptURL, {
         method: 'POST',
         headers: {
@@ -280,7 +284,7 @@ const addUserToLeaderboard = (level) => {
         body: new URLSearchParams({
             action: 'add',
             username: username,
-            level: level
+            score: score
         })
     });
 };
