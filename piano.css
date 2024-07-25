@@ -149,12 +149,22 @@
     background: rgb(75, 190, 75);
 }
 
+.key.correct.active {
+    background: rgb(94, 204, 94);
+    box-shadow: inset -1px -4px 2px 2px #141414c1;
+}
+
 .key.correct span {
     color: black;
 }
 
 .key.incorrect {
     background: rgb(222, 60, 60);
+}
+
+.key.incorrect.active {
+    background: rgb(236, 82, 82);
+    box-shadow: inset -1px -4px 2px 2px #141414c1;
 }
 
 .key.incorrect span {

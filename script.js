@@ -171,6 +171,10 @@ const verifyUserInput = (key) => {
     const chordKeys = currentChord.replace('.wav', '').split('');
     const keyElement = document.querySelector(`[data-key="${key}"]`);
 
+    if (keyElement.classList.contains("correct") || keyElement.classList.contains("incorrect")) {
+        return;
+    }
+
     if (chordKeys.includes(key)) { // correct
         keyElement.classList.add("correct");
         keyElement.classList.remove("incorrect");
