@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    border: solid 2px #505050;
+    border: solid 3px #000000;
     z-index: 5;
     transform: scale(0);
     animation: fade 1.5s ease 1s forwards;
@@ -80,7 +80,7 @@
 .wrapper {
     padding: 30px;
     border-radius: 20px;
-    background: #252525;
+    background: #703f0a;
     transition: all 1s ease;
 }
 
@@ -105,12 +105,13 @@
     height: 140px;
     margin: 0 -22px 0 -22px;
     border-radius: 0 0 5px 5px;
-    background: linear-gradient(#333, #000000);
+    background: linear-gradient(#3d2303, #673a02);
+    box-shadow: inset -1px -4px 4px 4px #141414c1;
 }
 
 .piano-keys .black.active {
     box-shadow: inset -5px -10px 10px rgba(255, 255, 255, 0.1);
-    background: linear-gradient(to bottom, #000, #434343);
+    background: linear-gradient(to bottom, #673a02, #442703);
 }
 
 .piano-keys .white {
@@ -118,50 +119,62 @@
     width: 70px;
     border-radius: 8px;
     border: 1px solid #000;
-    background: linear-gradient(#fff 96%, #eee 4%);
+    background: linear-gradient(#ffe5c3 96%, #f8cca0 4%);
+    box-shadow: 4px 4px black;
 }
 
 .piano-keys .white.active {
     box-shadow: inset -5px 5px 20px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+    background: linear-gradient(to bottom, #ffe5c3 0%, #f8cca0 100%);
 }
 
 .piano-keys .key span {
     position: absolute;
     bottom: 20px;
     width: 100%;
-    color: #A2A2A2;
     font-size: 1.13rem;
     text-align: center;
 }
 
-.piano-keys .key.hide span {
-    display: none;
+.white span {
+    color: rgb(126, 126, 126);
 }
 
-.piano-keys .black span {
+.black span {
     bottom: 13px;
-    color: #888888;
+    color: #e2e2e2;
 }
 
 .key.correct {
-    background: green;
+    background: rgb(75, 190, 75);
+}
+
+.key.correct span {
+    color: black;
 }
 
 .key.incorrect {
-    background: red;
+    background: rgb(222, 60, 60);
 }
 
-.key.starting-note {
-    background: rgb(211, 216, 211);
+.key.incorrect span {
+    color: black;
 }
 
-.key.key.starting-note span {
+.key.white.starting-note {
+    box-shadow: inset -5px 5px 20px rgba(255, 213, 4, 0.836);
+}
+
+.key.black.starting-note {
+    box-shadow: inset -1px -4px 4px 4px #141414e3, inset -5px 5px 20px rgba(247, 203, 5, 0.647);
+}
+
+.key.key.starting-note .white span {
     color: black;
 }
 
 .key.key.starting-note .black span {
-    color: rgb(230, 236, 229);
+    color: whitesmoke;
 }
 
 
