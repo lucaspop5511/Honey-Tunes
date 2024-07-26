@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     usernameInput.setAttribute('autocomplete', 'off');
 
+    // Vignette effect on hover (Start BTN)
     startButton.addEventListener('mouseenter', function () {
         body.classList.add('hover-vignette');
     });
-
     startButton.addEventListener('mouseleave', function () {
         body.classList.remove('hover-vignette');
     });
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         logoIMG.addEventListener('animationend', function () {
             nameForm.style.display = 'block';
-            usernameInput.focus(); // Focus on the input field after showing the form
+            usernameInput.focus(); // Focus on the input immediately
         }, { once: true });
     });
 
@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
     disablePiano();
 });
 
+// HoneyJar Menu
 function toggleMenu() {
     const menu = document.querySelector('.menu');
     const honeyJarLid = document.getElementById('jar-lid');
@@ -106,7 +107,7 @@ function toggleMenu() {
     }
 }
 
-
+// Loading Screen
 window.addEventListener('load', function () {
     const loadingScreen = document.getElementById('loading-screen');
     loadingScreen.style.display = 'none';

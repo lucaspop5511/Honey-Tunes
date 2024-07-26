@@ -37,15 +37,35 @@ const chords = {
     19: ['adyup.wav', 'wfhj;.wav', 'aegjl.wav', 'atgj;'] // Perfect Pitch
 };
 
+// Play note
 const playTune = (key) => {
     if (!pianoEnabled || chordIsPlaying) return;
 
     const audio = new Audio(`audio/BetterPianoNotes/${key}.wav`);
-    audio.volume = 1;
+    audio.volume = 0.7;
     audio.play();
+
     activeAudio[key] = audio;
 };
 
+// Play chord
+const playLevelSounds = (level) => {
+    chordIsPlaying = true;
+
+    const audio = new Audio(`audio/Chords/${currentChord}`);
+    audio.volume = 1;
+    audio.play();
+
+    audio.onended = () => {
+        chordIsPlaying = false;
+        playButton.disabled = false;
+        recordButton.disabled = false;
+    };
+
+    playButton.disabled = true;
+};
+
+// Stop audio when releasing key or click
 const stopTune = (key) => {
     if (activeAudio[key]) {
         const audio = activeAudio[key];
@@ -70,21 +90,6 @@ const stopTune = (key) => {
     }
 };
 
-const playLevelSounds = (level) => {
-    chordIsPlaying = true;
-
-    const audio = new Audio(`audio/Chords/${currentChord}`);
-    audio.play();
-
-    audio.onended = () => {
-        chordIsPlaying = false;
-        playButton.disabled = false;
-        recordButton.disabled = false;
-    };
-
-    playButton.disabled = true;
-};
-
 const pressedKey = (e) => {
     if (!pianoEnabled) return;
     const key = e.key.toLowerCase();
@@ -100,7 +105,6 @@ const pressedKey = (e) => {
         }
     }
 };
-
 const releasedKey = (e) => {
     if (!pianoEnabled) return;
     const key = e.key.toLowerCase();
@@ -113,14 +117,15 @@ const releasedKey = (e) => {
     }
 };
 
+// Enable or Disable all piano events
 const enablePiano = () => {
     pianoEnabled = true;
 };
-
 const disablePiano = () => {
     pianoEnabled = false;
 };
 
+// Update piano screen
 const updateLevelDisplay = () => {
     currentChord = chords[currentLevel][Math.floor(Math.random() * chords[currentLevel].length)];
     startingNote = currentChord[0]; // Extract the starting note from the chord name
@@ -167,6 +172,7 @@ const updateLivesDisplay = () => {
     livesDisplay.innerHTML = `Lives: ${lives}`;
 };
 
+// Checks current played note
 const verifyUserInput = (key) => {
     const chordKeys = currentChord.replace('.wav', '').split('');
     const keyElement = document.querySelector(`[data-key="${key}"]`);
@@ -234,6 +240,7 @@ const highlightStartingNote = () => {
     startingNoteKey.classList.add("starting-note");
 };
 
+// Listeners for key press and click
 pianoKeys.forEach(key => {
     allKeys.push(key.dataset.key);
     key.addEventListener("mousedown", () => {
@@ -252,10 +259,10 @@ pianoKeys.forEach(key => {
         }
     });
 });
-
 document.addEventListener("keydown", pressedKey);
 document.addEventListener("keyup", releasedKey);
 
+// PLAY BTN
 playButton.addEventListener('click', () => {
     playButton.disabled = true;
     recordButton.disabled = true;
@@ -267,7 +274,7 @@ playButton.addEventListener('click', () => {
     playLevelSounds(currentLevel);
 });
 
-
+// RECORD BTN
 recordButton.addEventListener('click', () => {
     recordButton.disabled = true;
     recording = true;
@@ -277,6 +284,8 @@ recordButton.addEventListener('click', () => {
 // Initialize the level and difficulty display
 updateLevelDisplay();
 
+
+// Store username to Leaderboard
 const addUserToLeaderboard = (score) => {
     const username = localStorage.getItem('username');
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzPFg9ERXcw5_-J-XGzeQh1QD72OTJZisQyRNXyNTFgZYtVDBAXT-qV2qu-2YEuZzwH/exec';
@@ -293,6 +302,7 @@ const addUserToLeaderboard = (score) => {
     });
 };
 
+// Page redirect
 const redirectToLeaderboard = () => {
     setTimeout(() => {
         window.location.href = 'leaderboard.html';
