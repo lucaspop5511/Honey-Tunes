@@ -10,7 +10,7 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    background-image: url('media/looneyTunesBackground.png');
+    background-image: url('media/background/looneyTunesBackground.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
