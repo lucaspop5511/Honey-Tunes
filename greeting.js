@@ -43,8 +43,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
+        // Restrict to only letters
         this.value = this.value.replace(/[^a-zA-Z]/g, '');
-
     });
 
     startButton.addEventListener('click', function () {
@@ -80,6 +80,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Disable piano keys until name is submitted
     disablePiano();
+
+    // Ensure focus stays in the input
+    usernameInput.addEventListener('keydown', function (event) {
+        // Prevent Tab and Escape keys from shifting focus
+        if (event.key === 'Tab' || event.key === 'Escape') {
+            event.preventDefault();
+            usernameInput.focus();
+        }
+    });
+
+    usernameInput.addEventListener('blur', function () {
+        // Refocus if the input loses focus
+        setTimeout(() => {
+            usernameInput.focus();
+        }, 0);
+    });
 });
 
 // HoneyJar Menu
