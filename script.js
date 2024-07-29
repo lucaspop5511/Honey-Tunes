@@ -101,6 +101,7 @@ const pressedKey = (e) => {
         clickedKey.classList.add("active");
 
         if (recording) {
+            recordButton.classList.add("recording");
             verifyUserInput(key);
         }
     }
@@ -213,6 +214,7 @@ const verifyUserInput = (key) => {
             return;
         }
         // Disable recording and reset state
+        recordButton.classList.remove("recording");
         recording = false;
         playButton.disabled = true;
         recordButton.disabled = true;
@@ -249,6 +251,7 @@ pianoKeys.forEach(key => {
             key.classList.add("active");
         }
         if (recording) {
+            recordButton.classList.add("recording");
             verifyUserInput(key.dataset.key);
         }
     });
@@ -267,6 +270,7 @@ playButton.addEventListener('click', () => {
     playButton.disabled = true;
     recordButton.disabled = true;
     recording = false;
+    recordButton.classList.remove("recording");
 
     // Reset the record button icon to its original state
     recordButton.querySelector('i').className = 'fa-solid fa-circle';
@@ -278,6 +282,7 @@ playButton.addEventListener('click', () => {
 recordButton.addEventListener('click', () => {
     recordButton.disabled = true;
     recording = true;
+    recordButton.classList.add("recording");
     enablePiano();
 });
 
