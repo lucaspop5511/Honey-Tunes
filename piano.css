@@ -42,11 +42,18 @@
     text-align: left;
     width: 60%;
     height: 100px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: repeat;
+    background-image: url("media/background/honeyHexagons.png");
+    opacity: 0.5;
     padding: 10px 20px;
-    border: solid 1px #727272;
+    border: solid 1px #422e1c;
     border-radius: 15px;
-    background-color: #0f0f0f;
+    background-color: #1a120e;
+    font-family: 'Roboto';
     color: whitesmoke;
+    box-shadow: 5px 5px black inset;
     z-index: 3;
 }
 

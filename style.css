@@ -87,10 +87,15 @@ body.blured {
 
 @font-face {
     font-family: 'thatsFontFolks';
-    src: url(media/Thats\ Font\ Folks!.ttf);
+    src: url(media/fonts/Thats\ Font\ Folks!.ttf);
 }
 
 @font-face {
     font-family: 'Playwrite';
-    src: url(media/Playwrite_NL/PlaywriteNL-VariableFont_wght.ttf);
+    src: url(media/fonts/Playwrite_NL/PlaywriteNL-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url(media/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf);
 }
