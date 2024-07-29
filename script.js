@@ -134,7 +134,6 @@ const updateLevelDisplay = () => {
 
     const levelDisplay = document.querySelector('.level');
     const difficultyDisplay = document.querySelector('.difficulty');
-    const livesDisplay = document.querySelector('.lives');
     const progressDisplay = document.querySelector('.progress');
 
     let difficulty;
@@ -158,8 +157,9 @@ const updateLevelDisplay = () => {
 
     levelDisplay.innerHTML = `Level: ${currentLevel}`;
     difficultyDisplay.innerHTML = `Difficulty: ${difficulty}`;
-    livesDisplay.innerHTML = `Lives: ${lives}`;
     progressDisplay.innerHTML = `0/${currentChord.length - 4}`;
+
+    renderLives();
 };
 
 const updateProgressDisplay = () => {
@@ -169,8 +169,18 @@ const updateProgressDisplay = () => {
 };
 
 const updateLivesDisplay = () => {
-    const livesDisplay = document.querySelector('.lives');
-    livesDisplay.innerHTML = `Lives: ${lives}`;
+    renderLives();
+};
+
+const renderLives = () => {
+    const livesContainer = document.getElementById('lives-container');
+    livesContainer.innerHTML = ''; // Clear existing hearts
+
+    for (let i = 0; i < lives; i++) {
+        const heart = document.createElement('i');
+        heart.classList.add('fa-solid', 'fa-heart');
+        livesContainer.appendChild(heart);
+    }
 };
 
 // Checks current played note
@@ -319,14 +329,17 @@ document.addEventListener('keyup', (event) => {
 function toggleInstructionsPanel() {
     const instructionsPanel = document.getElementById('instructions-panel');
     const pianoSection = document.getElementById('piano-section');
+    const logoSection = document.getElementById('logo-section');
 
     if (instructionsPanel.classList.contains('show')) {
         instructionsPanel.classList.remove('show');
         pianoSection.classList.remove('blur');
+        logoSection.classList.remove('blur');
         pianoEnabled = true;
     } else {
         instructionsPanel.classList.add('show');
         pianoSection.classList.add('blur');
+        logoSection.classList.add('blur');
         pianoEnabled = false;
     }
 }

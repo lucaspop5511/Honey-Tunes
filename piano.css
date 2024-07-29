@@ -57,6 +57,11 @@
     z-index: 3;
 }
 
+.lives i {
+    margin-right: 5px;
+    color: rgb(255, 204, 37);
+}
+
 .help {
     position: absolute;
     text-align: right;
@@ -97,25 +102,28 @@
     display: block;
 }
 
+/* Piano Buttons */
 .play-button {
-    background-color: rgb(235, 195, 146);
-    color: rgb(89, 183, 89);
+    background-color: #5b3a11;
+    color: rgb(209, 175, 111);
     margin-right: 25px;
     width: 8vw;
     height: 8vw;
     min-width: 30px;
-    border: solid 2px rgb(215, 175, 126);
+    border: solid 3px #412606;
     border-radius: 15px;
-    box-shadow: 4px 4px rgb(213, 170, 117);
+    box-shadow: 4px 4px #3d2303;
     font-size: 5vw;
+    cursor: pointer;
     z-index: 3;
     transition: transform 0.05s ease;
 }
 
 .play-button:disabled {
     transform: translate(5px, 5px);
-    box-shadow: 4px 5px rgb(213, 170, 117) inset;
-    color: rgb(49, 189, 49);
+    box-shadow: 4px 5px #3d2303 inset;
+    color: rgb(86, 166, 86);
+    cursor: not-allowed;
 }
 
 .play-button i {
@@ -123,25 +131,29 @@
 }
 
 .record-button {
-    background-color: rgb(235, 195, 146);
-    color: rgb(236, 104, 104);
+    background-color: #5b3a11;
+    color: rgb(209, 175, 111);
     margin-left: 25px;
     width: 8vw;
     height: 8vw;
     min-width: 30px;
-    border: solid 2px rgb(215, 175, 126);
+    border: solid 3px #412606;
     border-radius: 15px;
-    box-shadow: 4px 4px rgb(213, 170, 117);
+    box-shadow: 4px 4px #3d2303;
     font-size: 5vw;
+    cursor: pointer;
     z-index: 3;
     transition: transform 0.05s ease;
 }
 
 .record-button:disabled {
     transform: translate(5px, 5px);
-    box-shadow: 4px 5px rgb(213, 170, 117) inset;
-    color: rgb(251, 80, 80);
+    box-shadow: 4px 5px #3d2303 inset;
     cursor: not-allowed;
+}
+
+.record-button i {
+    transform: scale(.9);
 }
 
 .record-button.recording {
