@@ -194,7 +194,7 @@ const verifyUserInput = (key) => {
         if (lives <= 0) {
             // Handle game over
             addUserToLeaderboard(score);
-            redirectToLeaderboard();
+            showGameOverScreen();
             return;
         }
     }
@@ -210,16 +210,21 @@ const verifyUserInput = (key) => {
         if (currentLevel === 19) {
             // Handle game over
             addUserToLeaderboard(score);
-            redirectToLeaderboard();
+            showGameOverScreen();
             return;
         }
+
         // Disable recording and reset state
         recordButton.classList.remove("recording");
         recording = false;
         playButton.disabled = true;
         recordButton.disabled = true;
+
         // Visual feedback for completion
         recordButton.querySelector('i').className = 'fa-solid fa-circle-check';
+        // Show level completed message
+        showLevelCompletedMessage();
+
         // Move to the next level after 1.5s
         setTimeout(() => {
             playButton.disabled = false;
@@ -228,6 +233,14 @@ const verifyUserInput = (key) => {
             updateLevelDisplay();
         }, 1500);
     }
+};
+
+const showLevelCompletedMessage = () => {
+    const screen = document.querySelector('.screen');
+    screen.classList.add('hidden-children');
+    setTimeout(() => {
+        screen.classList.remove('hidden-children');
+    }, 1500);
 };
 
 const resetKeyColors = () => {
@@ -307,9 +320,15 @@ const addUserToLeaderboard = (score) => {
     });
 };
 
-// Page redirect
-const redirectToLeaderboard = () => {
+// Game Over and Page Redirect
+const showGameOverScreen = () => {
+    document.getElementById('piano-section').style.display = 'none';
+    const gameOverSection = document.getElementById('game-over');
+    document.getElementById('final-score').innerText = score;
+    gameOverSection.style.display = 'block';
+    pianoEnabled = false;
+
     setTimeout(() => {
         window.location.href = 'leaderboard.html';
-    }, 1000);
+    }, 4444);
 };

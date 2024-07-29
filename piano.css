@@ -63,6 +63,26 @@
     right: 20px;
 }
 
+.level-completed {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(226, 208, 44);
+    display: none;
+}
+
+.screen.hidden-children .level,
+.screen.hidden-children .difficulty,
+.screen.hidden-children .lives,
+.screen.hidden-children .progress {
+    display: none;
+}
+
+.screen.hidden-children .level-completed {
+    display: block;
+}
+
 .play-button {
     background-color: rgb(235, 195, 146);
     color: rgb(89, 183, 89);

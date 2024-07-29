@@ -75,6 +75,34 @@ body.blured {
     animation: spin 2s linear infinite;
 }
 
+#game-over {
+    display: none;
+    text-align: center;
+    z-index: 3;
+}
+
+#game-over h2 {
+    display: flex;
+    font-family: 'thatsFontFolks';
+    font-size: 100px;
+    color: #f8d942;
+}
+
+#game-over p {
+    display: flex;
+    font-family: 'Playwrite';
+    font-size: 50px;
+    color: #e7e5c4;
+}
+
+#game-over h6 {
+    position: fixed;
+    font-family: 'Roboto';
+    font-size: 20px;
+    color: #020200;
+    bottom: 10px;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
