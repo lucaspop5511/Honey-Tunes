@@ -53,6 +53,7 @@ body.blured {
     transition: all 1s ease;
 }
 
+/* Loading Screen */
 #loading-screen {
     position: fixed;
     top: 0;
@@ -75,6 +76,45 @@ body.blured {
     animation: spin 2s linear infinite;
 }
 
+
+/* Instructions Panel */
+#instructionsSign {
+    height: 60vw;
+    width: auto;
+    min-height: 400px;
+}
+
+#instructions-panel {
+    position: fixed;
+    bottom: -800px;
+    /* Start off-screen */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: bottom 0.5s ease-in-out;
+}
+
+#instructions-panel.show {
+    bottom: -50px;
+    /* Final position */
+}
+
+#piano-section.blur {
+    filter: blur(5px);
+    pointer-events: none;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* GAME OVER */
 #game-over {
     display: none;
     text-align: center;

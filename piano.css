@@ -57,6 +57,19 @@
     z-index: 3;
 }
 
+.help {
+    position: absolute;
+    text-align: right;
+    top: 15px;
+    right: 20px;
+}
+
+.help i {
+    color: rgb(255, 204, 37);
+    background-color: #fff3493d;
+    transform: scale(1.05);
+}
+
 .progress {
     position: absolute;
     bottom: 15px;
@@ -75,7 +88,8 @@
 .screen.hidden-children .level,
 .screen.hidden-children .difficulty,
 .screen.hidden-children .lives,
-.screen.hidden-children .progress {
+.screen.hidden-children .progress,
+.screen.hidden-children .help {
     display: none;
 }
 
@@ -313,6 +327,14 @@
     .piano-keys .white {
         height: 180px;
         width: 60px;
+    }
+
+    .screen {
+        font-size: 2.5vw;
+    }
+
+    .help {
+        font-size: 1.8vw;
     }
 }
 

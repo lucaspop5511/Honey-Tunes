@@ -299,6 +299,39 @@ recordButton.addEventListener('click', () => {
     enablePiano();
 });
 
+// INSTRUCTIONS PANEL
+let mKeyPressed = false;
+const pianoSection = document.getElementById('piano-section');
+
+document.addEventListener('keydown', (event) => {
+    if (event.key.toLowerCase() === 'm' && !mKeyPressed && pianoSection.style.display === 'block') {
+        toggleInstructionsPanel();
+        mKeyPressed = true;
+    }
+});
+
+document.addEventListener('keyup', (event) => {
+    if (event.key.toLowerCase() === 'm') {
+        mKeyPressed = false;
+    }
+});
+
+function toggleInstructionsPanel() {
+    const instructionsPanel = document.getElementById('instructions-panel');
+    const pianoSection = document.getElementById('piano-section');
+
+    if (instructionsPanel.classList.contains('show')) {
+        instructionsPanel.classList.remove('show');
+        pianoSection.classList.remove('blur');
+        pianoEnabled = true;
+    } else {
+        instructionsPanel.classList.add('show');
+        pianoSection.classList.add('blur');
+        pianoEnabled = false;
+    }
+}
+
+
 // Initialize the level and difficulty display
 updateLevelDisplay();
 
