@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const logoSection = document.getElementById('logo-section');
     const logoIMG = document.getElementById('logoIMG');
     const earTraining = document.getElementById('earTraining');
+    const usernameDisplay = document.getElementById('username-display');
     const body = document.body;
 
     const maxChars = 10;
@@ -66,12 +67,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const username = usernameInput.value.trim();
         if (username) {
-            // Store username (could be sent to server later)
+            // Store username
             localStorage.setItem('username', username);
 
             // Hide greeting section and show piano section
             document.getElementById('name-form').style.display = 'none';
             pianoSection.style.display = 'block';
+
+            // Show the username in the top right corner
+            usernameDisplay.style.display = 'block';
+            usernameDisplay.innerText = `" ${username} "`;
 
             // Enable piano keys
             enablePiano();
