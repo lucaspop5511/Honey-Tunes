@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="loading.css">
     <link rel="stylesheet" href="piano.css">
     <link rel="stylesheet" href="greeting.css">
     <link rel="stylesheet" href="leaderboard.css">
@@ -24,7 +25,13 @@
 
 <body>
     <div id="loading-screen">
-        <div class="spinner"></div>
+        <div class="spinner">
+            <div class="container">
+                <div class="border">
+                    <div class="content"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <img id="svgOverlay" src="media/background/noiseTexture.svg">

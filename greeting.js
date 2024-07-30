@@ -131,5 +131,8 @@ function toggleMenu() {
 // Loading Screen
 window.addEventListener('load', function () {
     const loadingScreen = document.getElementById('loading-screen');
-    loadingScreen.style.display = 'none';
+
+    setTimeout(() => {
+        loadingScreen.style.display = 'none';
+    }, 2500);
 });
