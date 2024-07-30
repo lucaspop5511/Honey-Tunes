@@ -60,14 +60,14 @@ body.blured {
 
 /* Instructions Panel */
 #instructionsSign {
-    height: 60vw;
+    height: 50vw;
     width: auto;
     min-height: 400px;
 }
 
 #instructions-panel {
     position: fixed;
-    bottom: -800px;
+    bottom: -150%;
     /* Start off-screen */
     left: 50%;
     transform: translateX(-50%);
@@ -81,7 +81,7 @@ body.blured {
 }
 
 #instructions-panel.show {
-    bottom: -50px;
+    bottom: -2vh;
     /* Final position */
 }
 
@@ -121,7 +121,7 @@ body.blured {
     font-family: 'Roboto';
     font-size: 20px;
     color: #020200;
-    bottom: 10px;
+    bottom: 20px;
 }
 
 @keyframes spin {

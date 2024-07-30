@@ -109,10 +109,14 @@
     margin-right: 25px;
     width: 8vw;
     height: 8vw;
-    min-width: 30px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 120px;
+    max-height: 120px;
     border: solid 3px #412606;
     border-radius: 15px;
     box-shadow: 4px 4px #3d2303;
+    padding: 5px;
     font-size: 5vw;
     cursor: pointer;
     z-index: 3;
@@ -123,7 +127,6 @@
     transform: translate(5px, 5px);
     box-shadow: 4px 5px #3d2303 inset;
     color: rgb(86, 166, 86);
-    cursor: not-allowed;
 }
 
 .play-button i {
@@ -136,10 +139,14 @@
     margin-left: 25px;
     width: 8vw;
     height: 8vw;
-    min-width: 30px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 120px;
+    max-height: 120px;
     border: solid 3px #412606;
     border-radius: 15px;
     box-shadow: 4px 4px #3d2303;
+    padding: 5px;
     font-size: 5vw;
     cursor: pointer;
     z-index: 3;
@@ -149,7 +156,6 @@
 .record-button:disabled {
     transform: translate(5px, 5px);
     box-shadow: 4px 5px #3d2303 inset;
-    cursor: not-allowed;
 }
 
 .record-button i {
@@ -323,7 +329,7 @@
     background-color: rgba(241, 209, 24, 0.404);
     padding: 5px 10px;
     border-radius: 5px;
-    font-size: 22px;
+    font-size: 4vh;
     font-family: 'thatsFontFolks';
 }
 

@@ -30,6 +30,7 @@
 #logoIMG {
     justify-content: center;
     width: 50vw;
+    min-width: 400px;
     height: auto;
     margin-bottom: 0;
     transition: all 0.2s ease;
@@ -79,12 +80,12 @@
     margin-top: 0px;
     margin-bottom: 0px;
     bottom: 7vh;
-    right: 47vw;
+    right: 46%;
     background-color: #c6474700;
     color: #1c160b;
     border: none;
     font-family: 'Playwrite';
-    font-size: 30px;
+    font-size: 40px;
     transition: color 0.5s ease;
     z-index: 5;
 }
@@ -151,6 +152,7 @@
 
 #logoIMG.shrink {
     animation: shrinkLogo 0.9s forwards;
+    min-width: 90px;
 }
 
 @media screen and (max-width: 815px) {

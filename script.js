@@ -22,7 +22,7 @@ const chords = {
     4: ['af.wav', 'ah.wav', 'as.wav', 'al.wav', 'ae.wav', 'au.wav', 'aj.wav', 'a;.wav'], // Easy
     5: ['sf.wav', 'dy.wav', 'fl.wav', 'tu.wav', 'st.wav', 'hl.wav', 'jl.wav', 'dg.wav'],
     6: ['at.wav', 'ay.wav', 'du.wav', 'hp.wav', 'sy.wav', 'go.wav', 'fj.wav'],
-    7: ['adg.wav', 'agk.wav', 'afk.wav', 'adk.wav'], // Medium
+    7: ['adg.wav', 'agk.wav', 'afk.wav'], // Medium
     8: ['afh.wav', 'afg.wav', 'adh.wav', 'agj.wav', 'aeg.wav', 'ag;.wav'],
     9: ['sgj.wav', 'agu.wav', 'afy.wav', 'dyj.wav', 'sfh.wav', 'dgj.wav', 'fyk.wav', 'dhk.wav'],
     10: ['aet.wav', 'agp.wav', 'ath.wav', 'af;.wav'], // Hard
@@ -368,13 +368,16 @@ const addUserToLeaderboard = (score) => {
 
 // Game Over and Page Redirect
 const showGameOverScreen = () => {
-    document.getElementById('piano-section').style.display = 'none';
-    const gameOverSection = document.getElementById('game-over');
-    document.getElementById('final-score').innerText = score;
-    gameOverSection.style.display = 'block';
-    pianoEnabled = false;
 
     setTimeout(() => {
-        window.location.href = 'leaderboard.html';
-    }, 4444);
+        document.getElementById('piano-section').style.display = 'none';
+        const gameOverSection = document.getElementById('game-over');
+        document.getElementById('final-score').innerText = score;
+        gameOverSection.style.display = 'block';
+        pianoEnabled = false;
+
+        setTimeout(() => {
+            window.location.href = 'leaderboard.html';
+        }, 4444);
+    }, 1000);
 };
