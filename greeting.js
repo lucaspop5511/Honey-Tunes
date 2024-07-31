@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
         this.value = this.value.replace(/[^a-zA-Z]/g, '');
     });
 
+    // Start Btn
     startButton.addEventListener('click', function () {
         startButton.style.display = 'none';
         logoSection.classList.add('move-up');
@@ -60,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }, { once: true });
     });
 
+    // Submit Btn
     nameForm.addEventListener('submit', function (event) {
         event.preventDefault();
         document.body.classList.add('blured');
@@ -69,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (username) {
             // Store username
             localStorage.setItem('username', username);
+            localStorage.setItem('currentPlayerUsername', username);
 
             // Hide greeting section and show piano section
             document.getElementById('name-form').style.display = 'none';

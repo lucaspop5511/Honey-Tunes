@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const leaderboardTableBody = document.getElementById('leaderboard-body');
     const googleScriptURL = 'https://script.google.com/macros/s/AKfycbzPFg9ERXcw5_-J-XGzeQh1QD72OTJZisQyRNXyNTFgZYtVDBAXT-qV2qu-2YEuZzwH/exec';
+    const currentUsername = localStorage.getItem('username');
+
+    console.log('Current Player Username from local storage:', currentUsername); //debug
 
     const displayLeaderboard = async () => {
         try {
@@ -8,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const leaderboard = await response.json();
             if (Array.isArray(leaderboard)) {
                 const leaderboardRows = leaderboard.map((entry, index) => `
-                    <tr>
+                    <tr class="${entry.username === currentUsername ? 'current-player' : ''}">
                         <td>${entry.rank}</td>
                         <td>${entry.username}</td>
                         <td>${entry.score}</td>
@@ -23,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
             leaderboardTableBody.innerHTML = '<tr><td colspan="3">Error loading data</td></tr>';
         }
     };
-
 
     window.addUserToLeaderboard = async (username, score) => {
         try {

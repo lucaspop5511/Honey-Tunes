@@ -1,32 +1,94 @@
-.leaderboard-container {
+body {
+    background-color: #cdcca3;
+    opacity: 0.8;
+    background-image: radial-gradient(circle at center center, #f1c423d5, #cdcca3),
+        repeating-radial-gradient(circle at center center, #f1c423e3, #f1c423dd, 31px, transparent 62px, transparent 31px);
+    background-blend-mode: multiply;
+    margin: 0;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+}
+
+.header,
+.footer {
+    width: 100%;
+    text-align: center;
+    background-color: #ffeca7e3;
+    border: 1px solid #2b2903;
+    padding: 10px 0;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.footer {
+    margin-top: auto;
+    display: flex;
     align-items: center;
-    margin-top: 20px;
+    justify-content: center;
+    opacity: 0.6;
+}
+
+.footer img {
+    max-height: 100px;
+}
+
+.credits {
+    position: absolute;
+    right: 25px;
+    font-size: 11px;
+    font-family: 'Playwrite';
 }
 
 .leaderboard-title {
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 10px;
+    font-family: 'Playwrite';
+}
+
+.leaderboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    flex: 1;
+    padding-top: 20px;
 }
 
 .leaderboard-table {
     width: 80%;
     border-collapse: collapse;
+    font-family: 'Comic Sans MS';
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 
 .leaderboard-table th,
 .leaderboard-table td {
-    border: 1px solid #ccc;
+    border: 1px solid #898989;
     padding: 8px;
     text-align: center;
 }
 
 .leaderboard-table th {
-    background-color: #f4f4f4;
+    background-color: #ffeca7;
 }
 
 .leaderboard-table td {
-    background-color: #fafafa;
+    background-color: #fff5bf;
+}
+
+.current-player {
+    font-weight: bold;
+    border: 2px solid #414141;
+}
+
+@font-face {
+    font-family: 'Playwrite';
+    src: url(media/fonts/Playwrite_NL/PlaywriteNL-VariableFont_wght.ttf);
 }
